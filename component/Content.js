@@ -1,6 +1,8 @@
 import React from "react";
-import { Platform, StyleSheet, View, Image, Text } from "react-native";
+import { Platform, View, Image, Text } from "react-native";
 import Icon from "@expo/vector-icons/build/MaterialIcons";
+
+import { content, general } from "./style";
 
 const instructions = Platform.select({
   ios: "Press Cmd+R to reload,\n" + "Cmd+D or shake for dev menu",
@@ -9,7 +11,7 @@ const instructions = Platform.select({
     "Shake or press menu button for dev menu"
 });
 
-const ContentHeader = () => (
+const Header = ({ imgUrl, username, userCity }) => (
   <View style={[general.container, content.header]}>
     <Image
       source={{ uri: "https://randomuser.me/api/portraits/men/29.jpg" }}
@@ -25,7 +27,7 @@ const ContentHeader = () => (
   </View>
 );
 
-const ContentImg = () => (
+const MainImg = ({ imgUrl }) => (
   <Image
     source={{
       uri:
@@ -40,7 +42,6 @@ const ContentBar = () => (
     <Icon name="favorite-border" style={content.IconBar} />
     <Icon name="chat-bubble-outline" style={content.IconBar} />
     <Icon name="send" style={content.IconBar} />
-    {/* <Icon name="more-horiz" style={[content.centerIconBar, content.IconBar]} /> */}
     <Icon
       name="bookmark-border"
       style={[content.leftIconBar, content.IconBar]}
@@ -48,7 +49,7 @@ const ContentBar = () => (
   </View>
 );
 
-const ContentDescription = () => (
+const Description = ({ text }) => (
   <Text style={[general.container, general.whiteColor]}>
     Lorem Ipsum is simply dummy text of the printing and typesetting industry.
     Lorem Ipsum has been the industry's standard dummy text ever since the
@@ -60,79 +61,10 @@ const ContentDescription = () => (
 
 const Content = () => (
   <View style={[general.mainBGColor, content.parent]}>
-    <ContentHeader />
-    <ContentImg />
+    <Header />
+    <MainImg />
     <ContentBar />
-    <ContentDescription />
+    <Description />
   </View>
 );
-
-const content = StyleSheet.create({
-  parent: {
-    paddingVertical: 20,
-    borderBottomWidth: 1,
-    borderBottomColor: "#576574"
-  },
-
-  header: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between"
-  },
-  userImg: {
-    width: 40,
-    height: 40,
-    borderRadius: "50%"
-  },
-  userInfo: {
-    marginLeft: 10,
-    width: "75%"
-  },
-  username: {
-    fontSize: 17,
-    fontWeight: "bold"
-  },
-  userCity: {
-    color: "#ccc"
-  },
-  moreIcon: {
-    fontSize: 30
-  },
-
-  mainImg: {
-    width: "100%",
-    height: 300,
-    marginTop: 20
-  },
-
-  contentBar: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    marginVertical: 15
-  },
-  IconBar: {
-    fontSize: 20,
-    color: "#fff"
-  },
-  leftIconBar: {
-    marginLeft: 170
-  },
-  centerIconBar: {
-    marginLeft: 20
-  }
-});
-
-const general = StyleSheet.create({
-  container: {
-    paddingHorizontal: 15
-  },
-  whiteColor: {
-    color: "#fff"
-  },
-  mainBGColor: {
-    backgroundColor: "#353b48"
-  }
-});
-
 export default Content;
