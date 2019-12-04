@@ -1,14 +1,9 @@
 import React from "react";
-import {
-  Platform,
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  ScrollView
-} from "react-native";
+import { Platform, Text, View, Image, ScrollView } from "react-native";
 import Icon from "@expo/vector-icons/build/MaterialIcons";
 import { LinearGradient } from "expo-linear-gradient";
+
+import { stories, general } from "./style";
 
 const instructions = Platform.select({
   ios: "Press Cmd+R to reload,\n" + "Cmd+D or shake for dev menu",
@@ -95,70 +90,5 @@ const Stories = () => (
     </ScrollView>
   </View>
 );
-
-/* =========================== Stories =========================== */
-const stories = StyleSheet.create({
-  parent: {
-    borderBottomWidth: 1,
-    borderBottomColor: "#576574"
-  },
-
-  head: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    marginTop: 10
-  },
-
-  watch: {
-    flexDirection: "row",
-    alignItems: "center"
-  },
-
-  icon: {
-    fontSize: 18,
-    color: "#fff"
-  },
-
-  body: {
-    marginTop: 15
-  },
-
-  oneStory: {
-    // textAlign: "center", // console error
-    marginHorizontal: 10
-  },
-
-  imgContainer: {
-    borderRadius: "50%",
-    backgroundColor: "red",
-    padding: 3,
-    width: 60,
-    height: 60
-  },
-
-  storyImg: {
-    width: "100%",
-    height: "100%",
-    borderRadius: "50%"
-  },
-
-  storyText: {
-    marginTop: 5,
-    textAlign: "center" // console error
-  }
-});
-
-const general = StyleSheet.create({
-  container: {
-    paddingHorizontal: 15
-  },
-  whiteColor: {
-    color: "#fff"
-  },
-  mainBGColor: {
-    backgroundColor: "#353b48"
-  }
-});
 
 export default Stories;
